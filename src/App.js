@@ -1,5 +1,5 @@
-import Login from "./Components/Login";
-import Reset from "./Components/Reset";
+import Login from "./Components/LoginPage";
+import Reset from "./Components/ResetPassword";
 
 import { useState } from "react";
 
