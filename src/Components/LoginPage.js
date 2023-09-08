@@ -1,33 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useLocalStorage from "./useLocalStorage";
 
-export default function Login(){
-   const [email,setEmail] = useState("");
-   const [password, setPassword] = useState("");  
+export default function Login() {
+  //  const [email,setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  //  so what we need to do just import the custom HOOKS in this file and DESTRUCTURE IT
+  const { email, setEmail } = useLocalStorage();
 
-   // order B2
-   //to get email back from forgotPassword to login page
-   useEffect(() => {
-    //getting the ITEM which has been already set to receive from 
-    // localstorage and storing itinside a variable loacalstorage
-    let email = localStorage.getItem("email");
-    if(email){
-      setEmail(email)
-    }
-    //empty dependency arrray as a 2nd argument means this 
-    // condition should happen at only initial render
-  }, [])
+  //usign CUSTOM HOOKS instead
+  //    // order B2
+  //    //to get email back from forgotPassword to login page
+  //    useEffect(() => {
+  //     //getting the ITEM which has been already set to receive from
+  //     // localstorage and storing itinside a variable loacalstorage
+  //     let email = localStorage.getItem("email");
+  //     if(email){
+  //       setEmail(email)
+  //     }
+  //     //empty dependency arrray as a 2nd argument means this
+  //     // condition should happen at only initial render
+  //   }, [])
 
-// order A1
-   useEffect(() => {
-    //setting the ITEM to receive 
-    localStorage.setItem("email", email);
-   }, [email])
+  // // order A1
+  //    useEffect(() => {
+  //     //setting the ITEM to receive
+  //     localStorage.setItem("email", email);
+  //    }, [email])
 
-   
-    return(
-        <>
-        <h1>Login to the Portal!</h1>
-        <h3>Login</h3>
+  return (
+    <>
+      <h1>Login to the Portal!</h1>
+      <h3>Login</h3>
       <input
         placeholder="Enter Email..."
         value={email}
@@ -47,12 +50,12 @@ export default function Login(){
       <br />
       <button
         onClick={() => {
-          console.log("Form submitted")
+          console.log("Form submitted");
         }}
       >
         Submit
       </button>
       <br />
-        </>
-    )
+    </>
+  );
 }

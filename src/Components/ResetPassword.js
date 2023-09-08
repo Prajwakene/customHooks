@@ -1,31 +1,36 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+//importing custom hooks
+import useLocalStorage from "./useLocalStorage";
 
-export default function Reset(){
-    const [email,setEmail] = useState("");
+export default function Reset() {
+  //destructring the custom hooks
+  const { email, setEmail } = useLocalStorage();
+  // const [email,setEmail] = useState("");
 
-    // order A2
-    useEffect(() => {
-      //getting the ITEM which has been already set to receive from 
-      // localstorage and storing itinside a variable loacalstorage
-      let email = localStorage.getItem("email");
-      if(email){
-        setEmail(email)
-      }
-      //empty dependency arrray as a 2nd argument means this 
-      // condition should happen at only initial render
-    }, [])
+  //uaing custom hooks instead
 
-    // order B1
-    //fot getting back email from ForgotPasssword yo Loginpage
-    useEffect(() => {
-      //setting the ITEM to receive 
-      localStorage.setItem("email", email);
-     }, [email])
-  
-    
-    return(
-        <>
-        <h3>Reset Password for</h3>
+  // // order A2
+  // useEffect(() => {
+  //   //getting the ITEM which has been already set to receive from
+  //   // localstorage and storing itinside a variable loacalstorage
+  //   let email = localStorage.getItem("email");
+  //   if(email){
+  //     setEmail(email)
+  //   }
+  //   //empty dependency arrray as a 2nd argument means this
+  //   // condition should happen at only initial render
+  // }, [])
+
+  // // order B1
+  // //fot getting back email from ForgotPasssword yo Loginpage
+  // useEffect(() => {
+  //   //setting the ITEM to receive
+  //   localStorage.setItem("email", email);
+  //  }, [email])
+
+  return (
+    <>
+      <h3>Reset Password for</h3>
       <input
         placeholder="Enter Email"
         value={email}
@@ -40,8 +45,8 @@ export default function Reset(){
         }}
       >
         Submit
-      </button>      
+      </button>
       <br />
-        </>
-    )
+    </>
+  );
 }
